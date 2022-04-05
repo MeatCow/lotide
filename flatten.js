@@ -1,16 +1,14 @@
-const flatten = (array) => {
-  let output = [];
-
-  for (let element of array) {
-    if (!Array.isArray(element)) {
-      output.push(element);
-    } else {
-      flatten(element).forEach(innerElement => {
-        output.push(innerElement);
-      });
-    }
+const flatten = (array, output = []) => {
+  
+  if (!Array.isArray(array)) {
+    output.push(array);
+    return;
   }
 
+  for (let element of array) {
+    flatten(element, output);
+  }
+  
   return output;
 };
 
