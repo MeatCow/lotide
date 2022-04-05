@@ -1,9 +1,10 @@
 const eqArrays = function(actual, expected) {
-  if (Array.isArray(actual) && Array.isArray(expected)) {
-    if (actual.length === expected.length) {
-      return actual.every((value, index) => value === expected[index]);
-    }
+  if (!Array.isArray(actual) ||
+      !Array.isArray(expected) ||
+      actual.length !== expected.length) {
+    return false;
   }
+  return actual.every((value, index) => value === expected[index]);
 };
 
 const assertEqual = function(actual, expected) {
