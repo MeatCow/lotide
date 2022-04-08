@@ -17,7 +17,12 @@ const eqArrays = function(actual, expected) {
 
 const eqObjects = function(object1, object2) {
   if (object1 === object2) {
+    console.log(object1, "is the same as", object2);
     return true;
+  }
+
+  if (typeof object1 !== typeof object2) {
+    return false;
   }
 
   if (Object.keys(object1).length !== Object.keys(object2).length) {
@@ -29,10 +34,8 @@ const eqObjects = function(object1, object2) {
       if (!eqArrays(value, object2[key])) {
         return false;
       }
-    } else if (typeof value === "object" && value !== null) {
-      if (!eqObjects(value, object2[key])) {
-        return false;
-      }
+    } else if (!eqObjects(value, object2[key])) {
+      return false;
     }
   }
 
@@ -55,6 +58,9 @@ assertEqual(eqObjects(cd, cd2), false);
 
 //Recursive test cases
 assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true);
+assertEqual(eqObjects({ a: { z: 1, f: 3 }, b: 2 }, { a: { z: 1, f: 3 }, b: 2 }), true);
+assertEqual(eqObjects({ a: { z: 1 }, cow: "moo" }, { a: { z: 1 }, cow: "moo" }), true);
 
 assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false);
 assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false);
+assertEqual(eqObjects({ a: { y: 0, sheep: "bahhhh" }, b: 2 }, { a: {y: 0, cow: "mooo"}, b: 2 }), false);
