@@ -4,7 +4,13 @@ const eqArrays = function(actual, expected) {
       actual.length !== expected.length) {
     return false;
   }
-  return actual.every((value, index) => value === expected[index]);
+  return actual.every((value, index) => {
+    if (!Array.isArray(value)) {
+      return value === expected[index];
+    } else {
+      return eqArrays(value, expected[index]);
+    }
+  });
 };
 
 const assertEqual = function(actual, expected) {
@@ -15,10 +21,13 @@ const assertEqual = function(actual, expected) {
   }
 };
 
-console.log(eqArrays([1, 2, 3], [3, 2, 1])); // => false
-console.log(eqArrays([1, 2, 3], [1, 2, 3])); // => true
+assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false);
+assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
+assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true);
+assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false);
+assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
 
-console.log(eqArrays(["1", "2", "3"], ["1", "2", "3"])); // => true
-console.log(eqArrays(["1", "2", "3"], ["1", "2", 3])); // => false
-
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
+//Recursive tests
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true);
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false);
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false);
