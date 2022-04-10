@@ -1,0 +1,25 @@
+{
+  "name": "lotide",
+  "version": "1.0.0",
+  "description": "My own implementation of the lodash library",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeatCow/lotide.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeatCow/lotide/issues"
+  },
+  "homepage": "https://github.com/MeatCow/lotide#readme",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2"
+  }
+}
