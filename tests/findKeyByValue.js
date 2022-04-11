@@ -2,21 +2,32 @@ import { describe } from "mocha";
 import { assert } from "chai";
 import { findKeyByValue } from "../lib/findKeyByValue.js";
 
-// const bestTVShowsByGenre = {
-//   // eslint-disable-next-line camelcase
-//   sci_fi: "The Expanse",
-//   comedy: "Brooklyn Nine-Nine",
-//   drama:  "The Wire"
-// };
-
-// assertEqual(findKeyByValue(bestTVShowsByGenre, "The Wire"), "drama");
-// assertEqual(findKeyByValue(bestTVShowsByGenre, "That '70s Show"), undefined);
-// assertEqual(findKeyByValue(bestTVShowsByGenre, "The Expanse"), "sci_fi");
+const testShows = {
+  scifi: "The Expanse",
+  comedy: "Brooklyn Nine-Nine",
+  drama:  "The Wire",
+  satire: "Brooklyn Nine-Nine"
+};
 
 describe("findKeyByValue", () => {
-  it("");
-  it("");
-  it("");
-  it("");
-  it("");
+  it("should return undefined if there is no matching value", () => {
+    assert.isUndefined(findKeyByValue(
+      testShows,
+      "Mr. Rogers"
+    ));
+  });
+  it("should return the first key matching the passed value", () => {
+    assert.strictEqual(findKeyByValue(
+      testShows,
+      "The Wire"
+    ),"drama"
+    );
+  });
+  it("should return the first key matching the passed value", () => {
+    assert.strictEqual(findKeyByValue(
+      testShows,
+      "The Expanse"
+    ),"scifi"
+    );
+  });
 });
