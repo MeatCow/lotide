@@ -1,4 +1,4 @@
-import { assertArraysEqual } from './lib/assertArraysEqual';
+import { assertArraysEqual } from './lib/assertArraysEqual.js';
 import { assertEqual } from './lib/assertEqual.js';
 import { assertObjectsEquals } from './lib/assertObjectsEquals.js';
 import { countLetters } from './lib/countLetters.js';
@@ -33,4 +33,5 @@ export {
   middle,
   tail,
   takeUntil,
-  without};
+  without,
+};
