@@ -1,25 +1,24 @@
 import { describe } from "mocha";
 import { assert } from "chai";
+import * as sinon from "sinon";
+import { inspect } from "util";
 import { assertObjectsEquals } from "../lib/assertObjectsEquals.js";
 
-// const ab = { a: "1", b: "2" };
-// const ba = { b: "2", a: "1" };
-// assertObjectsEqual(ab, ba);
-
-// const abc = { a: "1", b: "2", c: "3" };
-// assertObjectsEqual(abc, {a: "1", b: "2", c: "3" });
-
-// const cd = { c: "1", d: ["2", 3] };
-// const dc = { d: ["2", 3], c: "1" };
-// assertObjectsEqual(cd, dc);
-
-// const cd2 = { c: "1", d: ["2", 3, 4] };
-// assertObjectsEqual(cd2, { c: "1", d: ["2", 3, 4] });
-
 describe("assertObjectsEquals", () => {
-  it("");
-  it("");
-  it("");
-  it("");
-  it("");
+  it(`should console.log "Passed" message when 2 element are strictly equal`, () => {
+    const spy = sinon.spy(console, "log");
+    const actual = { a: "1", b: "2" };
+    const expected = { a: "1", b: "2" };
+    assertObjectsEquals(actual, expected);
+    assert(spy.calledWith(`👌👌👌 Assertion Passed: ${inspect(actual)} === ${inspect(expected)}`));
+    spy.restore();
+  });
+  it(`should console.log "Failed" message when 2 element are not strictly equal`, () => {
+    const spy = sinon.spy(console, "log");
+    const actual = { a: "1", b: "2" };
+    const expected = { b: "2", a: "1" };
+    assertObjectsEquals(actual, expected);
+    assert(spy.calledWith(`😬😬😬 Assertion Failed: ${inspect(actual)} !== ${inspect(expected)}`));
+    spy.restore();
+  });
 });
