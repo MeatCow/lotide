@@ -1,5 +1,5 @@
 {
-  "name": "lotide",
+  "name": "@meatcow/lotide",
   "version": "1.0.0",
   "description": "My own implementation of the lodash library",
   "type": "module",
