@@ -1,17 +1,36 @@
-//Dangerous file! Only run if you want to append contents to test files
+//Only run if you want to create a mess
+
 // import * as fs from 'fs';
 
-// for (const fileName of fs.readdirSync('lib')) {
-//   const fileContents = `import { describe } from "mocha";
-// import { assert } from "chai";
-// import { ${fileName.replace(".js","")} } from "../lib/${fileName}";
+// let output = ``;
+// let imports = ``;
+// let exports = `export {
+//   `;
 
-// describe("${fileName.replace(".js", "")}", () => {
-//   it("");
-//   it("");
-//   it("");
-//   it("");
-//   it("");
-// });`;
-//   fs.appendFileSync(`tests/${fileName}`, fileContents);
+// for (const fileName of fs.readdirSync('lib')) {
+//   imports += `import { ${fileName.replace(".js","")} } from './lib/${fileName}';
+//   `;
+//   exports += `${fileName.replace(".js","")},
+//   `;
 // }
+// exports += `};`;
+// output = imports + exports;
+// fs.writeFileSync(`index.js`, output);
+//-------------------------------------------------------------------------------------
+// import * as fs from 'fs';
+
+// let output = ``;
+// let imports = ``;
+// let exports = `export {
+//   `;
+
+// for (const fileName of fs.readdirSync('lib')) {
+//   imports += `import { ${fileName.replace(".js","")} } from './lib/${fileName}';
+//   `;
+//   exports += `${fileName.replace(".js","")},
+//   `;
+// }
+// exports += `};`;
+// output = imports + exports;
+// fs.writeFileSync(`index.js`, output);
+
