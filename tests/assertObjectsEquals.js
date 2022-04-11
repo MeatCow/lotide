@@ -16,7 +16,7 @@ describe("assertObjectsEquals", () => {
   it(`should console.log "Failed" message when 2 element are not strictly equal`, () => {
     const spy = sinon.spy(console, "log");
     const actual = { a: "1", b: "2" };
-    const expected = { b: "2", a: "1" };
+    const expected = { b: "1", a: "2" };
     assertObjectsEquals(actual, expected);
     assert(spy.calledWith(`😬😬😬 Assertion Failed: ${inspect(actual)} !== ${inspect(expected)}`));
     spy.restore();
