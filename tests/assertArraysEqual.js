@@ -20,12 +20,4 @@ describe("assertArraysEqual", () => {
     assert(spy.calledWith(`😬😬😬 Assertion Failed: ${actual} !== ${expected}`));
     spy.restore();
   });
-  it("should console.log a passed message with empty arrays", () => {
-    const spy = sinon.spy(console, "log");
-    const actual = [];
-    const expected = [];
-    assertArraysEqual(actual, expected);
-    assert(spy.calledWith(`👌👌👌 Assertion Passed: ${actual} === ${expected}`));
-    spy.restore();
-  });
 });
