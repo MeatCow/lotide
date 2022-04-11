@@ -5,14 +5,14 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MeatCow/lotide.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Matthieu Pauze",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MeatCow/lotide/issues"
