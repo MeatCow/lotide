@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "My own implementation of the lodash library",
   "type": "module",
-  "private": true,
   "scripts": {
     "test": "mocha tests/"
   },
