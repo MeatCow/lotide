@@ -2,18 +2,26 @@ import { describe } from "mocha";
 import { assert } from "chai";
 import { takeUntil } from "../lib/takeUntil.js";
 
-// const data1 = [1, 2, 5, 7, 2, -1, 2, 4, 5];
-// const results1 = takeUntil(data1, x => x < 0);
-// assertArraysEqual(results1, [1, 2, 5, 7, 2]);
-
-// const data2 = ["I've", "been", "to", "Hollywood", ",", "I've", "been", "to", "Redwood"];
-// const results2 = takeUntil(data2, x => x === ',');
-// assertArraysEqual(results2, ["I've", "been", "to", "Hollywood"]);
-
 describe("takeUntil", () => {
-  it("");
-  it("");
-  it("");
-  it("");
-  it("");
+  it("should return an empty array when input []", () => {
+    assert.deepEqual(takeUntil([]), []);
+  });
+  it("should return an empty array if predicate evaluates to true on first element", () => {
+    assert.deepEqual(takeUntil(
+      [1, 2, 3], () => true)
+    , []
+    );
+  });
+  it("should return all elements if predicate always returns false", () => {
+    assert.deepEqual(takeUntil(
+      [1, 2, 3], () => false)
+    , [1, 2, 3]
+    );
+  });
+  it("should not include element that caused the predicate to evaluate to false", () => {
+    assert.deepEqual(takeUntil(
+      [1, 2, 3], x => x === 3)
+    , [1, 2]
+    );
+  });
 });
