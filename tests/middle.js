@@ -2,8 +2,6 @@ import { describe } from "mocha";
 import { assert } from "chai";
 import { middle } from "../lib/middle.js";
 
-// assertArraysEqual(middle([1, 2, 3, 4, 5, 6]),[3,4]);
-
 describe("middle", () => {
   it("should return an empty array when given an array with 1 element", () => {
     assert.deepEqual(middle(
